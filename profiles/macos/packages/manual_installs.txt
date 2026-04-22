@@ -1,0 +1,6 @@
+# name = info
+
+Immich = https://immich.app
+WiiM Home = https://www.wiimhome.com/download
+Narrative Select = https://narrativeapp.com
+YouTube Music = Safari → youtube.com/music → File → Add to Dock

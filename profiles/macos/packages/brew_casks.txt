@@ -1,0 +1,69 @@
+# Development
+android-studio
+visual-studio-code
+warp
+docker
+podman-desktop
+utm
+hammerspoon
+
+# Window Management / Desktop
+amethyst
+rectangle
+linearmouse
+
+# Browsers
+firefox
+google-chrome
+
+# Communication
+discord
+slack
+
+# Security / VPN
+keepassxc
+mullvad-vpn
+
+# Remote Access
+rustdesk
+teamviewer
+
+# Cloud / Sync
+syncthing
+synology-drive
+
+# Media / Audio / Video
+iina
+vlc
+handbrake
+makemkv
+obs
+audacity
+plexamp
+plex
+sonobus
+musicbrainz-picard
+kid3
+
+# Creative
+figma
+inkscape
+glyphs
+
+# Productivity
+joplin
+appcleaner
+
+# Utilities
+raspberry-pi-imager
+fedora-media-writer
+
+# Office
+microsoft-office
+
+# Games / Emulation
+steam
+retroarch
+dolphin
+atlauncher
+nvidia-geforce-now

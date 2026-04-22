@@ -1,0 +1,34 @@
+# Development
+497799835 = Xcode
+
+# Editors
+1024640650 = CotEditor
+
+# Communication
+310633997 = WhatsApp
+
+# Security
+1352778147 = Bitwarden
+
+# Remote Access
+524141863 = Jump Desktop
+
+# Media
+1530145038 = Amperfy
+
+# Creative
+424389933 = Final Cut Pro
+682658836 = GarageBand
+
+# Productivity
+1111570163 = GrandPerspective
+1436522307 = Transmit 5
+
+# Office (Keynote, Pages, Numbers — pre-installed on macOS, skipped)
+784801555 = Microsoft OneNote
+
+# Utilities
+1538878817 = UTM
+
+# Audio Interface
+6754191950 = X-AIR Edit

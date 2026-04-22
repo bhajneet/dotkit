@@ -1,0 +1,55 @@
+set global tabstop 4
+set global indentwidth 0
+set global scrolloff 8,8
+set global autoreload yes
+set global ui_options ncurses_assistant=none
+
+def source-kakrc %{exec :source\ ~/.config/kak/kakrc<ret>}
+def ide-main %{
+    rename-client main
+    set global jumpclient main
+}
+def ide-tools %{:ne
+    rename-client tools
+    set global toolsclient tools
+}
+def ide %{
+    rename-client main
+    set global jumpclient main
+
+    tmux-terminal-vertical kak -c rename-client tools
+    set global toolsclient tools
+
+    set global scrolloff 0,0
+    set window scrolloff 5,5
+}
+def distraction-free-mode %{
+	set buffer scrolloff 100,30
+}
+
+#shortcuts
+map global normal '/' "/(?i)"
+map global normal 's' "s(?i)"
+
+map global normal <c-t> ':tag '
+map global normal <c-e> ':edit '
+map global normal <c-f> ':find '
+map global normal <c-b> ':buffer '
+
+map global normal '#' ':comment-line<ret>'
+map global object 'A' ':>,<lt><ret>'
+
+map global prompt <c-c> '<esc>'
+
+map global insert <c-w> '<a-;>:wq<ret>'
+map global normal <c-w> '<a-;>:wq<ret>'
+map global insert <c-q> '<a-;>:q<ret>'
+map global normal <c-q> '<a-;>:q<ret>'
+
+# hooks
+hook global WinCreate .* %{
+	addhl global/ show-matching
+	add-highlighter global/ number-lines -relative -hlcursor -separator "  "
+	add-highlighter global/ wrap -word
+	git show-diff
+}

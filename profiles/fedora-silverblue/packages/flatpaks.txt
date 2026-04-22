@@ -1,0 +1,16 @@
+com.discordapp.Discord = Discord
+com.google.Chrome = Google Chrome
+com.github.tchx84.Flatseal = Flatseal
+org.gnome.Extensions = GNOME Extensions
+org.localsend.localsend_app = LocalSend
+com.rustdesk.RustDesk = RustDesk
+tv.plex.PlexDesktop = Plex
+net.cozic.joplin_desktop = Joplin
+com.slack.Slack = Slack
+org.azahar_emu.Azahar = Azahar
+io.github.hmlendea.geforcenow-electron = GeForce Now
+dev.deedles.Trayscale = Trayscale
+com.github.zocker_160.SyncThingy = SyncThingy
+org.gnome.gitlab.somas.Apostrophe = Apostrophe
+page.tesk.Refine = Refine
+net.codelogistics.webapps = Web Apps

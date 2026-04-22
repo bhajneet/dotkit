@@ -1,0 +1,30 @@
+# Mac App Store
+mas
+
+# Development
+gh
+go
+dart
+cmake
+fnm
+rustup
+ruby
+python@3.13
+uv
+watchman
+pipx
+
+# CLI Utilities
+dockutil
+ripgrep
+exa
+jq
+aria2
+ncdu
+yt-dlp
+mosh
+lynx
+
+# Editors
+kakoune
+claude

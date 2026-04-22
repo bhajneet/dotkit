@@ -1,0 +1,24 @@
+# Output to specific folder
+--output "~/Music/YouTube/%(title)s-%(id)s.%(ext)s"
+
+# Restrict filenames to only ASCII characters,
+# and avoid "&" and spaces in filenames
+--restrict-filenames
+
+# Do not overwrite files
+--no-overwrites
+
+# Always extract audio
+--extract-audio
+
+# Specify audio format
+--audio-format "mp3"
+
+# Specify ffmpeg/avconv audio quality
+# 0 is better
+--audio-quality 0
+
+# Embed thumbnail in the audio as cover art
+--embed-thumbnail
+
+--format 'bestaudio'
