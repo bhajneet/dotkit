@@ -1,11 +1,12 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-echo "Applying Dock settings..."
+echo "Configuring Dock..."
 
-# Auto-hide, 48px tiles
+# Auto-hide, default tile size, lock tile size
 defaults write com.apple.dock autohide -bool true
-defaults write com.apple.dock tilesize -int 48
+defaults delete com.apple.dock "tilesize"
+defaults write com.apple.dock size-immutable -bool yes
 
 dockutil --remove all --no-restart
 # Finder stays at position 1 (macOS always keeps it)
@@ -28,4 +29,3 @@ dockutil --add /Applications/Warp.app                                --no-restar
 dockutil --add "/Applications/Glyphs 3.app"                         --no-restart
 
 killall Dock
-killall Finder

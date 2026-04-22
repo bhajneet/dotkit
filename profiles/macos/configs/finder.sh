@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
 set -euo pipefail
 
-echo "Applying Finder settings..."
+echo "Configuring Finder..."
 
 # Show all file extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+killall Finder
