@@ -130,46 +130,53 @@ private-ssh-key/
 
 Each file is downloaded to `~/.ssh/` and decrypted in place (stripping the `.age` extension).
 
-**To encrypt your keys** (run once, then push all `.age` files to the private repo):
+**To encrypt your keys** (run from any directory, then push all `.age` files to the private repo):
 
-All files must use the **same passphrase** — `run.sh` reads it once and uses it for every file. Read it into a variable first so it is consistent across all encryption commands:
+All files use the **same passphrase** — `run.sh` reads it once and uses it for every file.
 
+Set the age binary path:
 ```shell
-# Pick the right binary dir for your platform
-AGE_DIR=./bin/age-v1.3.1/darwin-arm64  # or linux-amd64 / linux-arm64
-chmod +x "$AGE_DIR/age" "$AGE_DIR/age-keygen" "$AGE_DIR/age-plugin-batchpass"
+AGE_DIR="$HOME/dev/dotkit/bin/age-v1.3.1/darwin-arm64"  # or linux-amd64 / linux-arm64
+chmod +x "$AGE_DIR/age" "$AGE_DIR/age-plugin-batchpass"
+```
 
+Navigate to your SSH folder and back up any existing `.age` files from a previous run:
+```shell
+cd ~/.ssh
+for f in *.age; do
+  [ -f "$f" ] && mv "$f" "$f.bak.$(date +%Y%m%d%H%M%S)"
+done
+```
+
+Read the passphrase and encrypt everything that isn't already an `.age` or `.age.bak.*` file:
+```shell
 printf "age passphrase: "; read -r AGE_PASSPHRASE
+export AGE_PASSPHRASE
+export PATH="$AGE_DIR:$PATH"
 
-AGE_PASSPHRASE="$AGE_PASSPHRASE" PATH="$AGE_DIR:$PATH" "$AGE_DIR/age" -e -j batchpass -o id_ed25519.age     ~/.ssh/id_ed25519
-AGE_PASSPHRASE="$AGE_PASSPHRASE" PATH="$AGE_DIR:$PATH" "$AGE_DIR/age" -e -j batchpass -o id_ed25519.pub.age ~/.ssh/id_ed25519.pub
+for f in *; do
+  [ -f "$f" ] || continue
+  case "$f" in *.age|*.age.bak.*) continue ;; esac
+  "$AGE_DIR/age" -e -j batchpass -o "$f.age" "$f"
+  echo "Encrypted: $f → $f.age"
+done
 ```
 
-**To verify** the encrypted files decrypt correctly:
+**To verify** all encrypted files decrypt correctly:
 
 ```shell
-PATH="$AGE_DIR:$PATH" "$AGE_DIR/age" -d id_ed25519.age     | diff - ~/.ssh/id_ed25519
-PATH="$AGE_DIR:$PATH" "$AGE_DIR/age" -d id_ed25519.pub.age | diff - ~/.ssh/id_ed25519.pub
+printf "age passphrase: "; read -r AGE_PASSPHRASE
+export AGE_PASSPHRASE
+export PATH="$AGE_DIR:$PATH"
+
+for f in *.age; do
+  [ -f "$f" ] || continue
+  original="${f%.age}"
+  [ -f "$original" ] || continue
+  "$AGE_DIR/age" -d -j batchpass "$f" | diff - "$original" \
+    && echo "OK: $f" || echo "FAIL: $f"
+done
 ```
-
-**Generating a post-quantum key (optional)**
-
-`age-keygen` supports hybrid post-quantum keys via `-pq`. These use ML-KEM (Kyber) alongside X25519 so that the encryption is secure even against a future quantum computer. If you prefer recipient-based encryption over a passphrase, generate a PQ identity once and encrypt to its public key:
-
-```shell
-# Generate a hybrid PQ identity (store identity.txt securely — treat it like a private key)
-"$AGE_DIR/age-keygen" -pq -o identity.txt
-
-# Encrypt SSH keys to the PQ public key
-"$AGE_DIR/age" -r "$(grep 'public key:' identity.txt | awk '{print $NF}')" -o id_ed25519.age     ~/.ssh/id_ed25519
-"$AGE_DIR/age" -r "$(grep 'public key:' identity.txt | awk '{print $NF}')" -o id_ed25519.pub.age ~/.ssh/id_ed25519.pub
-
-# Decrypt
-"$AGE_DIR/age" -d -i identity.txt id_ed25519.age     > ~/.ssh/id_ed25519
-"$AGE_DIR/age" -d -i identity.txt id_ed25519.pub.age > ~/.ssh/id_ed25519.pub
-```
-
-> If you use recipient-based encryption, update `setup_ssh_keys` in `run.sh` to use `-i identity.txt` instead of `-j batchpass`.
 
 **Generating a PAT (Personal Access Token)**
 
