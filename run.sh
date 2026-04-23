@@ -8,7 +8,7 @@ DOTKIT_DIR="$HOME/dev/dotkit"
 
 # Optional doorknock. Set to md5sum of your passphrase to enable, or leave empty.
 # Generate: echo -n "passphrase" | md5sum | cut -d' ' -f1
-PASSPHRASE_HASH=""
+PASSPHRASE_HASH="7e0a4e3e87f404101afc3560977d35d9"
 
 check_passphrase() {
   [ -z "$PASSPHRASE_HASH" ] && return 0
