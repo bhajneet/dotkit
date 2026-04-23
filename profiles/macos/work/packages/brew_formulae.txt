@@ -17,7 +17,7 @@ pipx
 # CLI Utilities
 dockutil
 ripgrep
-exa
+eza
 jq
 aria2
 ncdu

@@ -9,8 +9,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias l='exa -a1 --group-directories-first --git'
-alias ll='exa -al --group-directories-first --git --no-permissions --octal-permissions'
+alias l='eza -a1 --group-directories-first --git'
+alias ll='eza -al --group-directories-first --git --no-permissions --octal-permissions'
 
 alias search='brew search'
 alias install='brew install'
