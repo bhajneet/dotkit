@@ -27,4 +27,3 @@ lynx
 
 # Editors
 kakoune
-claude
