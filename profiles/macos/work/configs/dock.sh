@@ -5,7 +5,7 @@ echo "Configuring Dock..."
 
 # Auto-hide, default tile size, lock tile size
 defaults write com.apple.dock autohide -bool true
-defaults delete com.apple.dock "tilesize"
+defaults delete com.apple.dock "tilesize" 2>/dev/null || true
 defaults write com.apple.dock size-immutable -bool yes
 
 dockutil --remove all --no-restart
