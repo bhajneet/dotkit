@@ -1,5 +1,5 @@
 #!/bin/sh
-# Shared utilities sourced by all provision scripts.
+# Shared utilities
 
 # Print non-blank, non-comment lines from a config file.
 parse_list() {

@@ -27,9 +27,8 @@ curl -fsSL https://dotkit.<your-domain>.com | sh
 The goal of scripts is to be idempotent. Some examples of scripts that can be re-run (safely afaik):
 
 ```shell
-dotkit/scripts/dotfiles.sh
 dotkit/scripts/profile.sh
-dotkit/profiles/macos/provision.sh
+dotkit/platforms/macos/provision.sh
 ```
 
 ## Prerequisites
@@ -44,21 +43,52 @@ These programs may need to be installed before running the bootstrap. Everything
 
 ## File map
 
-| File                           | Purpose                                                                        |
-| ------------------------------ | ------------------------------------------------------------------------------ |
-| `run.sh`                       | Bootstrap. Clones repo, fetches and decrypts SSH keys, then runs `profile.sh`. |
-| `scripts/profile.sh`           | Lists available profiles and runs the selected one.                            |
-| `scripts/lib.sh`               | Shared shell utilities.                                                        |
-| `scripts/dotfiles.sh`          | Symlinks a dotfiles directory into `~/`.                                       |
-| `profiles/<name>/provision.sh` | Provisioning script for that profile.                                          |
+| Path                                      | Purpose                                                                         |
+| ----------------------------------------- | ------------------------------------------------------------------------------- |
+| `run.sh`                                  | Bootstrap. Clones repo, fetches and decrypts SSH keys, then runs `profile.sh`. |
+| `config.sh`                               | Optional top-level config (e.g. `DEV_DIR`). Sourced by plugins if present.     |
+| `scripts/profile.sh`                      | Detects platform, lists matching profiles, and runs the selected one.           |
+| `scripts/lib.sh`                          | Shared shell utilities (`parse_list`).                                          |
+| `platforms/<platform>/provision.sh`       | Orchestrator for that platform. Controls plugin ordering and autodiscovery.     |
+| `plugins/<name>.sh`                       | Cross-platform plugin. Reads data from the active profile via `$DOTKIT_PROFILE_DIR`. |
+| `plugins/packages/<name>.sh`              | Package manager plugin (e.g. `brew_formulae`, `flatpaks`).                     |
+| `plugins/extras/<name>.sh`               | Extra plugin (e.g. `repos`).                                                    |
+| `profiles/<platform>/<name>/`             | A profile. Data-only — no scripting logic.                                      |
+
+## Plugin system
+
+Plugins are shell scripts in `plugins/` that read their data from the active profile via `$DOTKIT_PROFILE_DIR`. The platform's `provision.sh` is a thin orchestrator — it runs plugins in a fixed category order and autodiscovers anything extra.
+
+> **Note:** The `plugins/` folder is bundled in this repo for convenience. In future, plugins will be downloaded automatically from the upstream dotkit plugins project based on what the profile needs — so you won't need to maintain them yourself.
+
+**Category order:** `packages` → `dotfiles` → `configs` → `extras`
+
+Within `packages`, what runs is determined entirely by what `.txt` files exist in the profile's `packages/` folder — one file per package manager plugin, matched by filename. An ordered list in `provision.sh` controls their relative order; anything not in the list runs after in discovered order.
+
+**To enable or disable a plugin**, add or remove the corresponding `.txt` file from your profile's `packages/` folder. For plugins with no data file (e.g. `brew_cli`, `fnm`), an empty `.txt` acts as an opt-in marker. For `extras`, add or remove the subdirectory under `extras/`.
+
+`extras` are fully autodiscovered: any `.txt` file under `profiles/<platform>/<name>/extras/` is matched to a plugin in `plugins/extras/` by filename.
+
+**To add a new plugin:**
+
+1. Create `plugins/<category>/<name>.sh` with the install/setup logic. Use `$DOTKIT_PROFILE_DIR` to locate data files and `$DOTKIT_DIR` for shared utilities.
+2. Add the corresponding data file or folder in your profile (e.g. `profiles/<platform>/<name>/packages/<name>.txt`).
+3. If order matters within a category, add it to the ordered list in the platform's `provision.sh`. Otherwise it autodiscovers.
+
+## Platform detection
+
+`scripts/profile.sh` detects the current platform from `uname` and `/etc/os-release`, then lists only the profiles available for that platform. Supported platforms: `macos`, `fedora-silverblue`, `fedora`, `ubuntu`, `debian`.
 
 ## Profile structure
 
-| Directory   | Purpose                                                |
-| ----------- | ------------------------------------------------------ |
-| `dotfiles/` | Dotfiles to symlink into `~/`.                         |
-| `packages/` | Packages to install (one list per package manager).    |
-| `configs/`  | Configs to apply (system preferences, UI tweaks, etc). |
+Profiles live at `profiles/<platform>/<name>/` and contain only data — no scripting logic.
+
+| Path            | Purpose                                                                |
+| --------------- | ---------------------------------------------------------------------- |
+| `dotfiles/`     | Dotfiles to symlink into `~/`.                                         |
+| `packages/`     | One `.txt` file per package manager. Matched to a plugin by filename. |
+| `configs/`      | Platform-specific config scripts (system prefs, UI tweaks, etc).      |
+| `extras/`       | One `.txt` file per extra plugin (e.g. `extras/repos.txt`).           |
 
 ## Doorknock (optional)
 

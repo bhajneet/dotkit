@@ -1,0 +1,12 @@
+# Repos to clone into ~/dev/<org>/<repo>
+# Format: org/repo (cloned via SSH: git@github.com:org/repo.git)
+
+# Shabados
+shabados/api
+shabados/brand
+shabados/database
+shabados/library
+shabados/mobile
+shabados/presenter
+shabados/SantLipi
+shabados/web
