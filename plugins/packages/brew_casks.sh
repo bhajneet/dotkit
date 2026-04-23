@@ -17,7 +17,7 @@ to_install="${to_install# }"
 [ -n "$to_install" ] || exit 0
 
 echo "Prefetching casks in parallel..."
-printf '%s\n' $to_install | xargs -P 4 -I {} brew fetch --cask {} 2>&1 || true
+printf '%s\n' $to_install | xargs -P 16 -I {} brew fetch --cask {} 2>&1 || true
 
 echo "Installing casks..."
 printf '%s\n' $to_install | xargs brew install --cask || true

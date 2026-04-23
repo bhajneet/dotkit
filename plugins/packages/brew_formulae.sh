@@ -16,7 +16,8 @@ EOF
 to_install="${to_install# }"
 [ -n "$to_install" ] || exit 0
 
-# Batch install — Homebrew resolves deps once and downloads bottles in parallel
+# Prefetch bottles in parallel, then batch install
+printf '%s\n' $to_install | xargs -P 16 -I {} brew fetch --formula {} 2>&1 || true
 printf '%s\n' $to_install | xargs brew install || true
 
 # Detect failures (brew install on already-installed pkg exits 0 immediately)
