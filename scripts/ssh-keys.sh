@@ -33,9 +33,7 @@ age_entries=$(_gh_get "$github_pat" "$gh_url" \
       $2 == "download_url" && name != "" { print name "|" $4; name="" }
     ')
 [ -z "$age_entries" ] && { echo "Error: no .age files found in private-ssh-key repo." >&2; exit 1; }
-echo "DEBUG: age_entries='$age_entries'"
 printf '%s\n' "$age_entries" | while IFS='|' read -r f dl_url; do
-  echo "DEBUG: downloading '$f' from '$dl_url'"
   _gh_download "$github_pat" "$dl_url" "$HOME/.ssh/$f"
 done
 
@@ -46,8 +44,6 @@ export PATH="$age_dir:$PATH"
 echo "Decrypting SSH keys..."
 printf '%s\n' "$age_entries" | while IFS='|' read -r f dl_url; do
   out="${f%.age}"
-  echo "DEBUG: decrypting '$f' -> '$out'"
   "$age_dir/age" --decrypt -j batchpass -o "$HOME/.ssh/$out" "$HOME/.ssh/$f"
-  echo "DEBUG: exit $?"
   chmod 600 "$HOME/.ssh/$out"
 done
