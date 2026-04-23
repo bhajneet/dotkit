@@ -24,11 +24,5 @@
 1111570163 = GrandPerspective
 1436522307 = Transmit 5
 
-# Office (Keynote, Pages, Numbers — pre-installed on macOS, skipped)
-784801555 = Microsoft OneNote
-
-# Utilities
-1538878817 = UTM
-
 # Audio Interface
 6754191950 = X-AIR Edit
