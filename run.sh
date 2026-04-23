@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 # Usage: curl -fsSL <url> | sh
 #        wget -qO- <url>  | sh
 #        sh run.sh
@@ -58,10 +59,34 @@ setup_ssh_keys() {
   done
 }
 
+install_prerequisites() {
+  os=$(uname -s)
+  case "$os" in
+    Darwin)
+      git --version >/dev/null 2>&1 && return 0
+      echo "Installing Xcode Command Line Tools (git)..."
+      sudo xcode-select --install
+      echo "Complete the installation popup, then re-run this script."
+      exit 0
+      ;;
+    Linux)
+      command -v git >/dev/null 2>&1 && return 0
+      echo "Installing git..."
+      if command -v apt-get >/dev/null 2>&1; then
+        sudo apt-get install -y git
+      elif command -v dnf >/dev/null 2>&1; then
+        sudo dnf install -y git
+      else
+        echo "Error: git is required. Please install it manually." >&2; exit 1
+      fi
+      ;;
+  esac
+}
+
 main() {
   check_passphrase
+  install_prerequisites
   [ -d "$DOTKIT_DIR" ] && { echo "Error: $DOTKIT_DIR already exists. Remove it and re-run." >&2; exit 1; }
-  command -v git >/dev/null 2>&1 || { echo "Error: git is required." >&2; exit 1; }
   mkdir -p "$(dirname "$DOTKIT_DIR")" && echo "Cloning repo..."
   git clone "$REPO" "$DOTKIT_DIR"
   printf "Set up SSH keys? [y/N]: "; read -r ssh_choice
