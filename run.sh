@@ -60,12 +60,12 @@ setup_ssh_keys() {
 
 main() {
   check_passphrase
-  printf "Set up SSH keys? [y/N]: "; read -r ssh_choice
-  case "$ssh_choice" in y|Y) setup_ssh_keys ;; esac
   [ -d "$DOTKIT_DIR" ] && { echo "Error: $DOTKIT_DIR already exists. Remove it and re-run." >&2; exit 1; }
   command -v git >/dev/null 2>&1 || { echo "Error: git is required." >&2; exit 1; }
   mkdir -p "$(dirname "$DOTKIT_DIR")" && echo "Cloning repo..."
   git clone "$REPO" "$DOTKIT_DIR"
+  printf "Set up SSH keys? [y/N]: "; read -r ssh_choice
+  case "$ssh_choice" in y|Y) setup_ssh_keys ;; esac
   sh "$DOTKIT_DIR/scripts/profile.sh"
 }
 
