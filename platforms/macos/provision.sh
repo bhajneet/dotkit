@@ -45,7 +45,7 @@ run_plugin() {
 }
 
 # Packages: profile dictates what runs, packages_ordered dictates sort order
-local -a packages_ordered=(brew_cli brew_formulae brew_casks mas manual fnm)
+local -a packages_ordered=(brew_cli brew_taps brew_formulae brew_casks mas manual fnm)
 local -a available=()
 for f in "$DOTKIT_PROFILE_DIR/packages/"*.txt; do
   [[ -f "$f" ]] || continue
