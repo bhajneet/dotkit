@@ -48,10 +48,12 @@ setup_ssh_keys() {
   done
   chmod +x "$age_dir/age" "$age_dir/age-plugin-batchpass"
   printf "age passphrase: "; read -r age_passphrase
+  export AGE_PASSPHRASE="$age_passphrase"
+  export PATH="$age_dir:$PATH"
   echo "Decrypting SSH keys..."
   printf '%s\n' "$age_files" | while IFS= read -r f; do
     out="${f%.age}"
-    AGE_PASSPHRASE="$age_passphrase" PATH="$age_dir:$PATH" "$age_dir/age" --decrypt -j batchpass -o "$HOME/.ssh/$out" "$HOME/.ssh/$f"
+    "$age_dir/age" --decrypt -j batchpass -o "$HOME/.ssh/$out" "$HOME/.ssh/$f"
     chmod 600 "$HOME/.ssh/$out"
   done
 }
