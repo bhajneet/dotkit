@@ -23,6 +23,7 @@ install_prerequisites() {
   os=$(uname -s)
   case "$os" in
     Darwin)
+      sudo xcodebuild -license accept 2>/dev/null || true
       git --version >/dev/null 2>&1 && return 0
       echo "Installing Xcode Command Line Tools (git)..."
       sudo xcode-select --install
