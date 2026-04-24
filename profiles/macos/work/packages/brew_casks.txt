@@ -1,5 +1,6 @@
 # Development
 claude
+claude-code
 android-studio
 visual-studio-code
 warp

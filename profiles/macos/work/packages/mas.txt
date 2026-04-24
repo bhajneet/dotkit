@@ -20,9 +20,5 @@
 424389933 = Final Cut Pro
 682658836 = GarageBand
 
-# Productivity
-1111570163 = GrandPerspective
-1436522307 = Transmit 5
-
 # Audio Interface
 6754191950 = X-AIR Edit
