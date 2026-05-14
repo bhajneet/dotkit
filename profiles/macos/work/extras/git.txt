@@ -1,3 +1,0 @@
-user.name = Bhajneet S.K.
-user.email = bhajneet@gmail.com
-init.defaultBranch = main

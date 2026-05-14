@@ -1,0 +1,30 @@
+# dotkit-data
+# module: packages/mas
+# module-src: local
+# module-version: 1.0.0
+
+# Development
+497799835 = Xcode
+
+# Editors
+1024640650 = CotEditor
+
+# Communication
+310633997 = WhatsApp
+
+# Security
+1352778147 = Bitwarden
+
+# Remote Access
+524141863 = Jump Desktop
+1295203466 = Windows App
+
+# Media
+1530145038 = Amperfy
+
+# Creative
+424389933 = Final Cut Pro
+682658836 = GarageBand
+
+# Audio Interface
+6754191950 = X-AIR Edit

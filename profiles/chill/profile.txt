@@ -1,0 +1,2 @@
+# dotkit profile configuration
+platform = fedora-silverblue

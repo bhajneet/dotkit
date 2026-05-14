@@ -1,0 +1,8 @@
+# dotkit-data
+# module: git/config
+# module-src: local
+# module-version: 1.0.0
+
+user.name = Bhajneet S.K.
+user.email = bhajneet@gmail.com
+init.defaultBranch = main

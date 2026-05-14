@@ -1,0 +1,1 @@
+Office printer = System Settings → Printers & Scanners → Add Printer or Scanner

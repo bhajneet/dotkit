@@ -1,0 +1,2 @@
+Chrome = sign in to Google account
+VS Code = sign in to sync settings (cmd+shift+p → Turn on Settings Sync)

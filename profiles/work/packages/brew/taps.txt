@@ -1,0 +1,6 @@
+# dotkit-data
+# module: packages/brew/taps
+# module-src: local
+# module-version: 1.0.0
+
+dart-lang/dart

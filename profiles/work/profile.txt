@@ -1,0 +1,3 @@
+# dotkit profile configuration
+platform = macos
+dev_dir = ~/dev

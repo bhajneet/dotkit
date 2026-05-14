@@ -1,0 +1,15 @@
+# dotkit-data
+# module: git/repos
+# module-src: local
+# module-version: 1.0.0
+# Format: org/repo (cloned via SSH: git@github.com:org/repo.git)
+
+# Shabados
+shabados/api
+shabados/brand
+shabados/database
+shabados/library
+shabados/mobile
+shabados/presenter
+shabados/SantLipi
+shabados/web

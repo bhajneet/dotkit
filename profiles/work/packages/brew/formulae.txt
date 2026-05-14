@@ -1,0 +1,35 @@
+# dotkit-data
+# module: packages/brew/formulae
+# module-src: local
+# module-version: 1.0.0
+
+# Mac App Store
+mas
+
+# Development
+pi-coding-agent
+gh
+go
+dart
+cmake
+fnm
+rustup
+ruby
+python@3.13
+uv
+watchman
+pipx
+
+# CLI Utilities
+dockutil
+ripgrep
+eza
+jq
+aria2
+ncdu
+yt-dlp
+mosh
+lynx
+
+# Editors
+kakoune
