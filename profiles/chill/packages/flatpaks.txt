@@ -1,3 +1,5 @@
+# Try to use online repo as much as possible
+flatpak install {{item}}
 com.discordapp.Discord = Discord
 com.google.Chrome = Google Chrome
 com.github.tchx84.Flatseal = Flatseal

@@ -1,11 +1,9 @@
-# theme = Adwaita
-# theme = Ayu Light
-# theme = Catppuccin Latte
-theme = One Half Light
-# theme = Rose Pine Dawn
-# theme = Zenbones
+# Disable the shell-integration-feature that changes the easy to see block into a difficult to see, super thin, hairline bar
+shell-integration-features = no-cursor
+cursor-style-blink = false
+cursor-color = cell-foreground
+cursor-text = cell-background
 
-#
-
-# theme = Apple System Colors Light
-# theme = GitHub Light Default
+# Other good ones: Adwaita, Ayu Light, Catppuccin Latte, Rose Pine Dawn, Zenbones
+# Defaults for testing CLI/TUIs: Apple System Colors Light, GitHub Light Default
+theme = light:One Half Light,dark:One Half Dark

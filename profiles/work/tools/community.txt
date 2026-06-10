@@ -1,0 +1,5 @@
+map dotkit run :tools/{{item}}
+brew
+uv
+node-fnm
+rust

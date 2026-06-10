@@ -1,10 +1,10 @@
-# dotkit-data
-# module: git/repos
-# module-src: local
-# module-version: 1.0.0
-# Format: org/repo (cloned via SSH: git@github.com:org/repo.git)
+# Skip if already exists, else clone org-user / repo
+map [ -d $DEV_DIR/{{item}} ] || gh repo clone {{item}} $DEV_DIR/{{item}}
 
-# Shabados
+# Bhajneet
+bhajneet/sikhgurdwara.com
+
+# Shabad OS
 shabados/api
 shabados/brand
 shabados/database
@@ -13,3 +13,11 @@ shabados/mobile
 shabados/presenter
 shabados/SantLipi
 shabados/web
+
+# Dotkit
+dotkit-run/cli
+dotkit-run/community
+dotkit-run/docs
+dotkit-run/example
+dotkit-run/homebrew-cli
+dotkit-run/install

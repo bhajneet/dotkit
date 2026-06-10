@@ -1,8 +1,9 @@
-# dotkit-data
-# module: git/config
-# module-src: local
-# module-version: 1.0.0
-
-user.name = Bhajneet S.K.
-user.email = bhajneet@gmail.com
-init.defaultBranch = main
+# Setup ~/.gitconfig
+map git config --global {{1}}
+user.name bhajneet
+user.email bhajneet@gmail.com
+init.defaultBranch main
+---
+# Setup a global gitignore file to ignore .DS_Store files in all git repositories
+echo ".DS_Store" > ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global

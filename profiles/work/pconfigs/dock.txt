@@ -1,0 +1,41 @@
+# Configure dock apps on macOS
+---
+# Ensure homebrew is installed
+try command -v brew >/dev/null && brew --version
+echo "Installing Homebrew..."
+dotkit run :tools/brew
+---
+# Ensure dockutil is installed
+try command -v dockutil >/dev/null && echo "dockutil $(dockutil --version)"
+echo "Installing dockutil via brew..."
+brew install --quiet dockutil
+---
+# Auto-hide, default tile size, lock tile size, no recent apps
+defaults write com.apple.dock autohide -bool true
+defaults delete com.apple.dock "tilesize" 2>/dev/null || true
+defaults write com.apple.dock size-immutable -bool yes
+defaults write com.apple.dock show-recents -bool false
+---
+# Remove all items from dock
+echo "Configuring Dock..."
+dockutil --remove all --no-restart
+---
+map dockutil --add "{{1}}" --no-restart
+# Finder stays at position 1 (macOS always keeps it)
+/Applications/Google Chrome.app
+/System/Applications/Mail.app
+/System/Applications/Calendar.app
+/System/Applications/Notes.app
+/System/Applications/Messages.app
+/Applications/WhatsApp.app
+/Applications/Amperfy.app
+/Applications/Ghostty.app
+/Applications/Visual Studio Code.app
+---
+# Add folders
+map dockutil --add "{{1}}" --no-restart --view grid --display stack --sort {{2}}
+/Applications = name
+~/Downloads = dateadded
+---
+# Restart dock to apply
+killall Dock

@@ -1,0 +1,165 @@
+# Taps, formulae, and casks via Homebrew
+
+# Ensure homebrew is installed
+try command -v brew >/dev/null && brew --version
+echo "Installing Homebrew..."
+dotkit run :tools/brew
+
+---
+
+map brew tap {{1}}
+
+---
+
+map brew install {{1}}
+
+# Mac App Store
+mas
+
+# Development
+pi-coding-agent
+gh
+go
+dart
+cmake
+fnm
+rustup
+ruby
+python@3.13
+uv
+watchman
+pipx
+
+# CLI Utilities
+dockutil
+ripgrep
+eza
+jq
+aria2
+ncdu
+yt-dlp
+mosh
+lynx
+
+# Editors
+kakoune
+
+---
+
+map brew install --cask {{1}}
+
+# Development
+block-goose
+claude
+claude-code
+android-studio
+visual-studio-code
+ghostty
+warp
+docker
+podman-desktop
+utm
+hammerspoon
+
+# Window Management / Desktop
+amethyst
+rectangle
+linearmouse
+
+# Browsers
+firefox
+google-chrome
+
+# Communication
+discord
+slack
+
+# Security / VPN
+keepassxc
+mullvad-vpn
+
+# Remote Access
+rustdesk
+teamviewer
+
+# Cloud / Sync
+syncthing
+synology-drive
+
+# Media / Audio / Video
+iina
+vlc
+handbrake
+makemkv
+obs
+audacity
+plexamp
+plex
+sonobus
+musicbrainz-picard
+kid3
+
+# Creative
+figma
+inkscape
+glyphs
+
+# Productivity
+joplin
+appcleaner
+
+# Utilities
+raspberry-pi-imager
+
+# Office
+microsoft-office
+
+# Games / Emulation
+steam
+retroarch
+dolphin
+atlauncher
+nvidia-geforce-now
+
+---
+
+# Avoid quarantine issues on macOS
+
+map brew install {{key}} && sudo chown -R $(whoami) /Applications/{{value}}.app && xattr -r -d com.apple.quarantine /Applications/{{value}}.app
+fedora-media-writer = FedoraMediaWriter
+
+---
+
+# Mac App Store via mas cli
+# Ensure mas is installed
+try command -v mas >/dev/null && echo "mas $(mas --version)"
+echo "Installing mas via brew..."
+echo "Note: user must manually sign in to the Mac App Store before mas can install apps"
+brew install mas
+
+---
+
+map mas install {{key}}
+
+# Development
+497799835 = Xcode
+1024640650 = CotEditor
+
+# Communication
+310633997 = WhatsApp
+
+# Security
+1352778147 = Bitwarden
+
+# Remote Access
+524141863 = Jump Desktop
+1295203466 = Windows App
+
+# Media Players
+1530145038 = Amperfy
+
+# Creative
+424389933 = Final Cut Pro
+682658836 = GarageBand
+6754191950 = X-AIR Edit
+1661733229 = LocalSend
