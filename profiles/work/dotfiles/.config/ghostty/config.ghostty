@@ -7,3 +7,6 @@ cursor-text = cell-background
 # Other good ones: Adwaita, Ayu Light, Catppuccin Latte, Rose Pine Dawn, Zenbones
 # Defaults for testing CLI/TUIs: Apple System Colors Light, GitHub Light Default
 theme = light:One Half Light,dark:One Half Dark
+
+font-family = "JetBrainsMono Nerd Font Mono"
+font-family = "Sant Lipi"

@@ -43,6 +43,8 @@ lynx
 
 # Editors
 kakoune
+ffmpeg
+ffprobe
 
 ---
 
@@ -116,10 +118,13 @@ microsoft-office
 
 # Games / Emulation
 steam
-retroarch
+#retroarch do manually
 dolphin
 atlauncher
 nvidia-geforce-now
+
+# Fonts
+font-jetbrains-mono-nerd-font
 
 ---
 
