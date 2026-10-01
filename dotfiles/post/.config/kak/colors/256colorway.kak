@@ -45,7 +45,7 @@ evaluate-commands %sh{
         face global list ${base08}
 
 	    # builtin
-        face global Default ${base05},default
+        face global Default ${base05},${base00}
         face global PrimarySelection default,${base02}+b
         face global SecondarySelection default,${base01}
         face global PrimaryCursor ${base00},${base06}+b

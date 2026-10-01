@@ -2,7 +2,7 @@
 ## by Bhajneet S.K.
 ## Based on base16 methodology by Chris Kempson (chriskempson.com)
 
-%sh{
+evaluate-commands %sh{
     base00='rgb:263238'
     base01='rgb:37474F'
     base02='rgb:455A64'
@@ -22,53 +22,53 @@
 
     ## code
     echo "
-        face value ${base09}
-        face type ${base0A}+b
-        face identifier ${base08}
-        face string ${base0B}
-        face keyword ${base0E}
-        face operator ${base05}
-        face attribute ${base0C}
-        face comment ${base03}
-        face meta ${base0D}
-        face builtin ${base0D}+b
+        face global value ${base09}
+        face global type ${base0A}+b
+        face global identifier ${base08}
+        face global string ${base0B}
+        face global keyword ${base0E}
+        face global operator ${base05}
+        face global attribute ${base0C}
+        face global comment ${base03}
+        face global meta ${base0D}
+        face global builtin ${base0D}+b
     "
 
     ## markup
     echo "
-        face title ${base0D}+b
-        face header ${base0D}+b
-        face bold ${base0A}+b
-        face italic ${base0E}
-        face mono ${base0B}
-        face block ${base0C}
-        face link ${base09}
-        face bullet ${base08}
-        face list ${base08}
+        face global title ${base0D}+b
+        face global header ${base0D}+b
+        face global bold ${base0A}+b
+        face global italic ${base0E}
+        face global mono ${base0B}
+        face global block ${base0C}
+        face global link ${base09}
+        face global bullet ${base08}
+        face global list ${base08}
     "
 
     ## builtin
     echo "
-        face Default ${base05},${base00}
-        face PrimarySelection default,${base02}
-        face SecondarySelection default,${base01}
-        face PrimaryCursor ${base00},${base05}
-        face SecondaryCursor ${base07},${base04}
-        face LineNumbers ${base02},${base00}
-        face LineNumbersWrapped ${base00},default
-        face LineNumberCursor ${base0A},${base00}
-        face MenuForeground ${base00},${base0D}
-        face MenuBackground ${base00},${base0C}
-        face MenuInfo ${base02}
-        face Information ${base00},${base0A}
-        face Error ${base00},${base08}
-        face StatusLine ${base04},${base01}
-        face StatusLineMode ${base0B}
-        face StatusLineInfo ${base0D}
-        face StatusLineValue ${base0C}
-        face StatusCursor ${base00},${base05}
-        face Prompt ${base0D},${base01}
-        face MatchingChar ${base06},${base02}+b
-        face BufferPadding ${base03},${base00}
+        face global Default ${base05},${base00}
+        face global PrimarySelection default,${base02}
+        face global SecondarySelection default,${base01}
+        face global PrimaryCursor ${base00},${base05}
+        face global SecondaryCursor ${base07},${base04}
+        face global LineNumbers ${base02},${base00}
+        face global LineNumbersWrapped ${base00},default
+        face global LineNumberCursor ${base0A},${base00}
+        face global MenuForeground ${base00},${base0D}
+        face global MenuBackground ${base00},${base0C}
+        face global MenuInfo ${base02}
+        face global Information ${base00},${base0A}
+        face global Error ${base00},${base08}
+        face global StatusLine ${base04},${base01}
+        face global StatusLineMode ${base0B}
+        face global StatusLineInfo ${base0D}
+        face global StatusLineValue ${base0C}
+        face global StatusCursor ${base00},${base05}
+        face global Prompt ${base0D},${base01}
+        face global MatchingChar ${base06},${base02}+b
+        face global BufferPadding ${base03},${base00}
     "
 }
