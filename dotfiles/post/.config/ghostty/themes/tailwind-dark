@@ -1,0 +1,31 @@
+# Tailwind Dark: Tailwind CSS v3 palette (normal = 400, bright = 300, grays = neutral)
+# families: red, green, yellow, sky, fuchsia, teal
+background = #262626
+foreground = #e5e5e5
+selection-background = #475569
+selection-foreground = cell-foreground
+
+# black: neutral-700 / neutral-400
+palette = 0=#404040
+palette = 8=#a3a3a3
+# red: red-400 / red-300
+palette = 1=#f87171
+palette = 9=#fca5a5
+# green: green-400 / green-300
+palette = 2=#4ade80
+palette = 10=#86efac
+# yellow: yellow-400 / yellow-300
+palette = 3=#facc15
+palette = 11=#fde047
+# blue: sky-400 / sky-300
+palette = 4=#38bdf8
+palette = 12=#7dd3fc
+# magenta: fuchsia-400 / fuchsia-300
+palette = 5=#e879f9
+palette = 13=#f0abfc
+# cyan: teal-400 / teal-300
+palette = 6=#2dd4bf
+palette = 14=#5eead4
+# white: neutral-200 / neutral-100
+palette = 7=#e5e5e5
+palette = 15=#f5f5f5
