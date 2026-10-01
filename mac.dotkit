@@ -1,0 +1,12 @@
+dotkit link dotfiles/base
+---
+map dotkit run {{item}}
+configs
+packages/tools
+packages/macos
+configs/git
+configs/post
+---
+dotkit link dotfiles/post
+---
+dotkit todo --out ~/TODO.md todo

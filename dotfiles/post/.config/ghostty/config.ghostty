@@ -10,3 +10,7 @@ theme = light:One Half Light,dark:One Half Dark
 
 font-family = "JetBrainsMono Nerd Font Mono"
 font-family = "Sant Lipi"
+
+copy-on-select = clipboard
+selection-clear-on-copy = true
+
