@@ -1,7 +1,10 @@
 # Tailwind Light: Tailwind CSS v3 palette (normal = 600, bright = 500, grays = neutral)
 # families: red, green, yellow, sky, fuchsia, teal
+# background: neutral-50
 background = #fafafa
+# foreground: neutral-950
 foreground = #0a0a0a
+# selection: slate-200 / cell-foreground
 selection-background = #e2e8f0
 selection-foreground = cell-foreground
 

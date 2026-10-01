@@ -1,7 +1,10 @@
 # Tailwind Dark: Tailwind CSS v3 palette (normal = 400, bright = 300, grays = neutral)
 # families: red, green, yellow, sky, fuchsia, teal
+# background: neutral-800
 background = #262626
+# foreground: neutral-200
 foreground = #e5e5e5
+# selection: slate-600 / cell-foreground
 selection-background = #475569
 selection-foreground = cell-foreground
 
